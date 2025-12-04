@@ -1,7 +1,11 @@
+// import mongoose library
 import mongoose from "mongoose";
+
+// define the user schema using mongoose schema constructor
 
 const userSchema = new mongoose.Schema(
   {
+    // define the name field with type String, required, and trimmed
     firstName: {
       type: String,
       required: [true, "First name is required"],
@@ -15,7 +19,8 @@ const userSchema = new mongoose.Schema(
       required: [true, "Last name is required"],
       trim: true,
     },
-
+ 
+    // define email feild with type String, required, and trimmed
     email: {
       type: String,
       required: [true, "Email is required"],
@@ -61,6 +66,21 @@ const userSchema = new mongoose.Schema(
         ref: "CourseProgress",
       },
     ],
+    active: {
+      type: Boolean,
+      default: true,
+    },
+    approved: {
+      type: Boolean,
+      default: true,
+    },
+    token: {
+      type: String,
+    },
+    resetPasswordExpires: {
+      type: Date,
+    },
+    
   },
   {
     timestamps: true, // createdAt and updatedAt automatically
