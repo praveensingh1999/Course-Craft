@@ -245,3 +245,63 @@ export const sendotp = async (req, res) => {
   }
 };
 
+
+// controller for changing password
+export const changePassword = async (req, res) => {
+  try {
+    // Get logged-in user details
+    const userDetails = await User.findById(req.user.id);
+
+    // Extract old & new passwords
+    const { oldPassword, newPassword } = req.body;
+
+    // Validate old password
+    const isPasswordMatch = await bcrypt.compare(
+      oldPassword,
+      userDetails.password
+    );
+
+    if (!isPasswordMatch) {
+      return res.status(401).json({
+        success: false,
+        message: "Old password is incorrect",
+      });
+    }
+
+    // Encrypt & update new password
+    const encryptedPassword = await bcrypt.hash(newPassword, 10);
+
+    const updatedUserDetails = await User.findByIdAndUpdate(
+      req.user.id,
+      { password: encryptedPassword },
+      { new: true }
+    );
+
+    // Send confirmation email
+    try {
+      await mailSender(
+        updatedUserDetails.email,
+        "Your password has been updated",
+        passwordUpdated(updatedUserDetails.email, updatedUserDetails.firstName)
+      );
+    } catch (emailError) {
+      console.error("Email error:", emailError);
+      return res.status(500).json({
+        success: false,
+        message: "Password changed but failed to send email",
+      });
+    }
+
+    // Final response
+    return res.status(200).json({
+      success: true,
+      message: "Password updated successfully",
+    });
+  } catch (error) {
+    console.error("Password update error:", error);
+    return res.status(500).json({
+      success: false,
+      message: "Unable to update password. Try again later.",
+    });
+  }
+};
