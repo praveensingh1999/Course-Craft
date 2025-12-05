@@ -188,3 +188,60 @@ export const login = async (req, res) => {
     });
   }
 };
+
+
+// send otp for email verification 
+export const sendotp = async (req, res) => {
+  try {
+    const { email } = req.body;
+
+    // Check if user already exists
+    const userExists = await User.findOne({ email });
+
+    if (userExists) {
+      return res.status(401).json({
+        success: false,
+        message: "User is already registered",
+      });
+    }
+
+    // Generate 6-digit OTP
+    let otp = otpGenerator.generate(6, {
+      upperCaseAlphabets: false,
+      lowerCaseAlphabets: false,
+      specialChars: false,
+    });
+
+    // Ensure OTP is unique
+    let existingOtp = await OTP.findOne({ otp });
+
+    while (existingOtp) {
+      otp = otpGenerator.generate(6, {
+        upperCaseAlphabets: false,
+        lowerCaseAlphabets: false,
+        specialChars: false,
+      });
+      existingOtp = await OTP.findOne({ otp });
+    }
+
+    // Save OTP to database
+    await OTP.create({ email, otp });
+
+    // Send Email
+    await mailSender(email, "Email Verification OTP", emailTemplate(otp));
+
+    return res.status(200).json({
+      success: true,
+      message: "OTP sent successfully",
+      otp, // remove in production
+    });
+  } catch (error) {
+    console.log(error.message);
+    return res.status(500).json({
+      success: false,
+      message: "Could not send OTP",
+      error: error.message,
+    });
+  }
+};
+
