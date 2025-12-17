@@ -60,16 +60,17 @@ export const signup = async (req, res) => {
     }
 
     // Find the most recent OTP
-    const response = await OTP.find({ email })
-      .sort({ createdAt: -1 })
-      .limit(1);
+    const response = await OTP.findOne({ email })
+      .sort({ createdAt: -1 });
+      
 
-    if (response.length === 0 || response[0].otp !== otp) {
-      return res.status(400).json({
-        success: false,
-        message: "The OTP is not valid",
-      });
-    }
+   if (!response || response.otp !== otp) {
+  return res.status(400).json({
+    success: false,
+    message: "The OTP is not valid",
+  });
+}
+
 
     // Hash the password
     const hashedPassword = await bcrypt.hash(password, 10);
@@ -95,7 +96,7 @@ export const signup = async (req, res) => {
       accountType,
       approved,
       additionalDetails: profileDetails._id,
-      image: "",
+      image: `https://api.dicebear.com/5.x/initials/svg?seed=${firstname} ${lastName}`,
     });
 
     return res.status(200).json({

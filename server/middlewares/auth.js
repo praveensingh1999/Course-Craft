@@ -96,14 +96,14 @@ export const isInstructor = async (req, res, next) => {
     console.log(userDetails);
     console.log(userDetails.role);
 
-    if (userDetails.accountType !== "Instructor") {
+    if (userDetails.role !== "Instructor") {
       return res.status(401).json({
         success: false,
         message: "This is a Protected Route for Instructor",
       });
     }
 
-    next();
+    next(); 
   } catch (error) {
     return res.status(500).json({
       success: false,
