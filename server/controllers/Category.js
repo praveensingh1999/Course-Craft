@@ -1,11 +1,11 @@
-const Category = require("../models/Category")
+import Category from "../models/Category.js"
 
 function getRandomInt(max) {
   return Math.floor(Math.random() * max)
 }
 
 // ================= CREATE CATEGORY =================
-exports.createCategory = async (req, res) => {
+export const createCategory = async (req, res) => {
   try {
     const { name, description } = req.body
 
@@ -35,7 +35,7 @@ exports.createCategory = async (req, res) => {
 }
 
 // ================= SHOW ALL CATEGORIES =================
-exports.showAllCategories = async (req, res) => {
+export const showAllCategories = async (req, res) => {
   try {
     const allCategories = await Category.find({})
     return res.status(200).json({
@@ -51,17 +51,16 @@ exports.showAllCategories = async (req, res) => {
 }
 
 // ================= CATEGORY PAGE DETAILS =================
-exports.categoryPageDetails = async (req, res) => {
+export const categoryPageDetails = async (req, res) => {
   try {
     const { categoryId } = req.body
 
     // Selected category
-    const selectedCategory = await Category.findById(categoryId)
-      .populate({
-        path: "courses",
-        match: { status: "Published" },
-        populate: ["ratingAndReviews", "instructor"],
-      })
+    const selectedCategory = await Category.findById(categoryId).populate({
+      path: "courses",
+      match: { status: "Published" },
+      populate: ["ratingAndReviews", "instructor"],
+    })
 
     if (!selectedCategory) {
       return res.status(404).json({

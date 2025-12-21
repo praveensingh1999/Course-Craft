@@ -1,8 +1,9 @@
-const User = require("../models/User")
-const mailSender = require("../utils/mailSender")
-const crypto = require("crypto")
+import User from "../models/User.js"
+import mailSender from "../utils/mailSender.js"
+import crypto from "crypto"
 
-exports.resetPasswordToken = async (req, res) => {
+// ================= RESET PASSWORD TOKEN =================
+export const resetPasswordToken = async (req, res) => {
   try {
     const { email } = req.body
 
