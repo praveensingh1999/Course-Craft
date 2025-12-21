@@ -1,11 +1,75 @@
-import express from "express";
-const app = express();
+import express from "express"
+import cookieParser from "cookie-parser"
+import cors from "cors"
+import fileUpload from "express-fileupload"
+import dotenv from "dotenv"
 
-app.get("/", (req, res)=>{
-    res.send("welcome to the corse craft");
+import database from "./config/database.js"
+import { cloudinaryConnect } from "./config/cloudinary.js"
+
+import userRoutes from "./routes/User.js"
+import profileRoutes from "./routes/Profile.js"
+import paymentRoutes from "./routes/Payments.js"
+import courseRoutes from "./routes/Course.js"
+import contactUsRoute from "./routes/Contact.js"
+
+const app = express()
+
+dotenv.config()
+const PORT = process.env.PORT || 4000
+
+// ================================
+// Database Connection
+// ================================
+database.connect()
+
+// ================================
+// Middlewares
+// ================================
+app.use(express.json())
+app.use(cookieParser())
+
+app.use(
+  cors({
+    origin: "http://localhost:3000",
+    credentials: true,
+  })
+)
+
+app.use(
+  fileUpload({
+    useTempFiles: true,
+    tempFileDir: "/tmp",
+  })
+)
+
+// ================================
+// Cloudinary Connection
+// ================================
+cloudinaryConnect()
+
+// ================================
+// Routes
+// ================================
+app.use("/api/v1/auth", userRoutes)
+app.use("/api/v1/profile", profileRoutes)
+app.use("/api/v1/course", courseRoutes)
+app.use("/api/v1/payment", paymentRoutes)
+app.use("/api/v1/reach", contactUsRoute)
+
+// ================================
+// Default Route
+// ================================
+app.get("/", (req, res) => {
+  return res.json({
+    success: true,
+    message: "Your server is up and running....",
+  })
 })
 
-
-app.listen(3000, ()=>{
-    console.log(`Server is running on http://localhost:3000`);
+// ================================
+// Server Start
+// ================================
+app.listen(PORT, () => {
+  console.log(`App is running at ${PORT}`)
 })
