@@ -12,7 +12,7 @@ import { convertSecondsToDuration } from "../utils/secToDuration.js"
 export const createCourse = async (req, res) => {
   try {
     const userId = req.user.id
-
+// fetch data
     let {
       courseName,
       courseDescription,
@@ -24,11 +24,14 @@ export const createCourse = async (req, res) => {
       instructions: _instructions,
     } = req.body
 
+
+    // get thumbnail
     const thumbnail = req.files.thumbnailImage
 
     const tag = JSON.parse(_tag)
     const instructions = JSON.parse(_instructions)
 
+    // validation
     if (
       !courseName ||
       !courseDescription ||
@@ -46,15 +49,17 @@ export const createCourse = async (req, res) => {
     }
 
     if (!status) status = "Draft"
-
+// check for instructor 
     const instructorDetails = await User.findById(userId)
+
+    // validate
     if (!instructorDetails) {
       return res.status(404).json({
         success: false,
         message: "Instructor Details Not Found",
       })
     }
-
+// check the giventag is valid or not
     const categoryDetails = await Category.findById(category)
     if (!categoryDetails) {
       return res.status(404).json({
@@ -62,12 +67,12 @@ export const createCourse = async (req, res) => {
         message: "Category Details Not Found",
       })
     }
-
+// upload on cloudinary
     const thumbnailImage = await uploadImageToCloudinary(
       thumbnail,
       process.env.FOLDER_NAME
     )
-
+// create an entry for new course
     const newCourse = await Course.create({
       courseName,
       courseDescription,
@@ -80,19 +85,20 @@ export const createCourse = async (req, res) => {
       status,
       instructions,
     })
-
+// add the new course to the user schema of instructor
     await User.findByIdAndUpdate(
       instructorDetails._id,
       { $push: { courses: newCourse._id } },
       { new: true }
     )
-
+ // update category schema
     await Category.findByIdAndUpdate(
       category,
       { $push: { courses: newCourse._id } },
       { new: true }
     )
 
+    // return response
     res.status(200).json({
       success: true,
       data: newCourse,

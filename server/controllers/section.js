@@ -7,8 +7,9 @@ import SubSection from "../models/SubSection.js"
 // ================================
 export const createSection = async (req, res) => {
   try {
+    //fetch data section name and courseid from req body
     const { sectionName, courseId } = req.body
-
+// data validate
     if (!sectionName || !courseId) {
       return res.status(400).json({
         success: false,
@@ -36,7 +37,7 @@ export const createSection = async (req, res) => {
         },
       })
       .exec()
-
+// return response
     return res.status(200).json({
       success: true,
       message: "Section created successfully",
@@ -57,14 +58,15 @@ export const createSection = async (req, res) => {
 // ================================
 export const updateSection = async (req, res) => {
   try {
+    // fetch data
     const { sectionName, sectionId, courseId } = req.body
-
+  // update data
     const section = await Section.findByIdAndUpdate(
       sectionId,
       { sectionName },
       { new: true }
     )
-
+//populate coursecontent and subsection
     const course = await Course.findById(courseId)
       .populate({
         path: "courseContent",
@@ -73,7 +75,7 @@ export const updateSection = async (req, res) => {
         },
       })
       .exec()
-
+// return response
     return res.status(200).json({
       success: true,
       message: section,
