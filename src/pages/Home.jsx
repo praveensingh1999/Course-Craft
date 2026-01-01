@@ -6,13 +6,14 @@ import { Link } from "react-router-dom"
 // Image and Video Import
 import Banner from "../assets/Images/banner.mp4"
 // Component Imports
-// import Footer from "../components/common/Footer"
-// import ReviewSlider from "../components/common/ReviewSlider"
+ import Footer from "../components/common/Footer"
+//import ReviewSlider from "../components/common/ReviewSlider"
+
 import CTAButton from "../components/core/HomePage/Button"
  import CodeBlocks from "../components/core/HomePage/CodeBlocks"
  import ExploreMore from "../components/core/HomePage/ExploreMore"
 import HighlightText from "../components/core/HomePage/HighlightText"
-// import InstructorSection from "../components/core/HomePage/InstructorSection"
+
  import LearningLanguageSection from "../components/core/HomePage/LearningLanguageSection"
  import TimelineSection from "../components/core/HomePage/TimelineSection"
  import InstructorSection from "../components/core/HomePage/InstructorSection"
@@ -183,7 +184,16 @@ function Home() {
       <div className="relative mx-auto my-20 flex w-11/12 max-w-maxContent flex-col items-center justify-between gap-8 bg-richblack-900 text-white">
         {/* Become a instructor section */}
         <InstructorSection />
+
+         {/* Reviws from Other Learner */}
+        <h1 className="text-center text-4xl font-semibold mt-8">
+          Reviews from other learners
+        </h1>
+        {/* <ReviewSlider /> */}
+
         </div>
+         {/* Footer */}
+      <Footer />
 
 </div>
 
