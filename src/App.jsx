@@ -8,7 +8,7 @@ function App() {
  
 
   return (
-    <div className="w-screen min-h-screen bg-[#000814] flex flex-col font-inter">
+    <div className="w-screen min-h-screen bg-[#0C2B4E] flex flex-col font-inter">
       
     <Routes>
      <Route path="/" element={<Home/>}/>
