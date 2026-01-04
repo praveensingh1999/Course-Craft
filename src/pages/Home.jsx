@@ -75,7 +75,7 @@ function Home() {
           <CodeBlocks
             position={"lg:flex-row"}
             heading={
-              <div className="text-4xl font-semibold">
+              <div className="text-4xl font-bold">
                 Unlock your
                 <HighlightText text={"coding potential"} /> with our online
                 courses.
@@ -105,7 +105,7 @@ function Home() {
           <CodeBlocks
             position={"lg:flex-row-reverse"}
             heading={
-              <div className="w-full text-4xl font-semibold ">
+              <div className="w-full text-4xl font-bold ">
                 Start
                 <HighlightText text={"coding in seconds"} />  and build amazing apps.
               </div>
@@ -181,7 +181,7 @@ function Home() {
       </div>
 
        {/* Section 3 */}
-      <div className="relative mx-auto my-20 flex w-11/12 max-w-maxContent flex-col items-center justify-between gap-8 bg-richblack-900 text-white">
+      <div className="relative mx-auto my-20 flex w-11/12 max-w-[1260px] flex-col items-center justify-between gap-8  text-white">
         {/* Become a instructor section */}
         <InstructorSection />
 
