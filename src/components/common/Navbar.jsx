@@ -6,10 +6,10 @@ import { useSelector } from "react-redux"
 import { Link, matchPath, useLocation } from "react-router-dom"
 
 import logo from "../../assets/Images/logo.jpg";
-import { NavbarLinks } from "../../data/Navbar-link"
-import { apiConnector } from "../../services/apiconnector"
+import {NavbarLinks}  from "../../data/Navbar-link";
+import  {apiConnector}  from "../../services/apiconnector";
 import { categories } from "../../services/apis"
-import { ACCOUNT_TYPE } from "../../utils/constants"
+import  {ACCOUNT_TYPE}  from "../../utils/constant"
 import ProfileDropdown from "../core/Auth/ProfileDropDown"
 function Navbar() {
     const { token } = useSelector((state) => state.auth)
@@ -21,10 +21,12 @@ function Navbar() {
   const [loading, setLoading] = useState(false)
 
   useEffect(() => {
-    ;(async () => {
+    (async () => {
       setLoading(true)
       try {
+         console.log("inside res1");
         const res = await apiConnector("GET", categories.CATEGORIES_API)
+        console.log("inside res", res);
         setSubLinks(res.data.data)
       } catch (error) {
         console.log("Could not fetch Categories.", error)
@@ -41,17 +43,17 @@ function Navbar() {
 
   return (
     <div className={`flex h-14 items-center justify-center border-b border-b-richblack-700 ${
-        location.pathname !== "/" ? "bg-richblack-800" : ""
+        location.pathname !== "/" ? "bg-[#161D29]" : ""
       } transition-all duration-200`}>
 
-        <div className="flex w-11/12 max-w-maxContent items-center justify-between">
+        <div className="flex w-11/12 max-w-[1260px] items-center justify-between">
         {/* Logo */}
         <Link to="/">
           <img src={logo} alt="Logo" width={160} height={32} loading="lazy" />
         </Link>
         {/* Navigation links */}
         <nav className="hidden md:block">
-          <ul className="flex gap-x-6 text-richblack-25">
+          <ul className="flex gap-x-6 text-[#DBDDEA]">
             {NavbarLinks.map((link, index) => (
               <li key={index}>
                 {link.title === "Courses" ? (
@@ -65,8 +67,8 @@ function Navbar() {
                     >
                       <p>{link.title}</p>
                       <BsChevronDown />
-                      <div className="invisible absolute left-[50%] top-[50%] z-1000 flex w-[200px] translate-x-[-50%] translate-y-[3em] flex-col rounded-lg bg-richblack-5 p-4 text-richblack-900 opacity-0 transition-all duration-150 group-hover:visible group-hover:translate-y-[1.65em] group-hover:opacity-100 lg:w-[300px]">
-                        <div className="absolute left-[50%] top-0 -z-10 h-6 w-6 translate-x-[80%] translate-y-[-40%] rotate-45 select-none rounded bg-richblack-5"></div>
+                      <div className="invisible absolute left-[50%] top-[50%] z-1000 flex w-[200px] translate-x-[-50%] translate-y-[3em] flex-col rounded-lg bg-[#F1F2FF] p-4 text-[#000814] opacity-0 transition-all duration-150 group-hover:visible group-hover:translate-y-[1.65em] group-hover:opacity-100 lg:w-[300px]">
+                        <div className="absolute left-[50%] top-0 -z-10 h-6 w-6 translate-x-[80%] translate-y-[-40%] rotate-45 select-none rounded bg-[#F1F2FF]"></div>
                         {loading ? (
                           <p className="text-center">Loading...</p>
                         ) : (subLinks && subLinks.length) ? (
@@ -81,7 +83,7 @@ function Navbar() {
                                     .split(" ")
                                     .join("-")
                                     .toLowerCase()}`}
-                                  className="rounded-lg bg-transparent py-4 pl-4 hover:bg-richblack-50"
+                                  className="rounded-lg bg-transparent py-4 pl-4 hover:bg-[#C5C7D4]"
                                   key={i}
                                 >
                                   <p>{subLink.name}</p>
@@ -99,8 +101,8 @@ function Navbar() {
                     <p
                       className={`${
                         matchRoute(link?.path)
-                          ? "text-yellow-25"
-                          : "text-richblack-25"
+                          ? "text-[#FFE83D]"
+                          : "text-[#DBDDEA]"
                       }`}
                     >
                       {link.title}
@@ -113,11 +115,11 @@ function Navbar() {
         </nav>
         {/* Login / Signup / Dashboard */}
         <div className="hidden items-center gap-x-4 md:flex">
-          {user && user?.accountType !== ACCOUNT_TYPE.INSTRUCTOR && (
+          {user && user?.role !== ACCOUNT_TYPE.INSTRUCTOR && (
             <Link to="/dashboard/cart" className="relative">
-              <AiOutlineShoppingCart className="text-2xl text-richblack-100" />
+              <AiOutlineShoppingCart className="text-2xl text-[#AFB2BF]" />
               {totalItems > 0 && (
-                <span className="absolute -bottom-2 -right-2 grid h-5 w-5 place-items-center overflow-hidden rounded-full bg-richblack-600 text-center text-xs font-bold text-yellow-100">
+                <span className="absolute -bottom-2 -right-2 grid h-5 w-5 place-items-center overflow-hidden rounded-full bg-[#424854] text-center text-xs font-bold text-[#E7C009]">
                   {totalItems}
                 </span>
               )}
@@ -125,14 +127,14 @@ function Navbar() {
           )}
           {token === null && (
             <Link to="/login">
-              <button className="rounded-lg border border-richblack-700 bg-richblack-800 px-3 py-2 text-richblack-100">
+              <button className="rounded-lg border border-[#2C333F] bg-[#161D29] px-3 py-2 text-[#AFB2BF]">
                 Log in
               </button>
             </Link>
           )}
           {token === null && (
             <Link to="/signup">
-              <button className="rounded-lg border border-richblack-700 bg-richblack-800 px-3 py-2 text-richblack-100">
+              <button className="rounded-lg border border-[#2C333F] bg-[#161D29] px-3 py-2 text-[#AFB2BF]">
                 Sign up
               </button>
             </Link>

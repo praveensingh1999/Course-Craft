@@ -20,6 +20,7 @@ import HighlightText from "../components/core/HomePage/HighlightText"
 
 
 function Home() {
+  console.log("inside home");
   return (
      <div>
       {/* Section 1 */}
