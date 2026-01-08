@@ -1,4 +1,5 @@
 import { Route, Routes } from "react-router-dom";
+import Contact from "./pages/Contact";
 import Error from "./pages/Error";
 import Dashboard from "./pages/Dashboard";
 import PrivateRoute from "./components/core/Auth/PrivateRoute";
@@ -10,7 +11,9 @@ import VerifyEmail from "./pages/VerifyEmail";
 import Home from "./pages/Home";
 import Navbar from "./components/common/Navbar";
 import OpenRoute from "./components/core/Auth/OpenRoute";
+import About from "./pages/About";
 import "./App.css";
+import BacktoTop from "./components/common/BacktoTop";
 
 function App() {
   return (
@@ -48,6 +51,17 @@ function App() {
             </OpenRoute>
           }
         />
+        <Route
+          path="/about"
+          element={
+            
+              <About />
+            
+          }
+        />
+
+        <Route path="/contact" element={<Contact />} />
+
 
         <Route
           path="/verify-email"
@@ -80,6 +94,8 @@ function App() {
         {/* 404 */}
         <Route path="*" element={<Error />} />
       </Routes>
+
+       <BacktoTop/>
     </div>
   );
 }

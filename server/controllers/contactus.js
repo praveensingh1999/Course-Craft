@@ -25,6 +25,21 @@ export const contactUsController = async (req, res) => {
       )
     );
 
+    // mail send to admin also 
+    const emailadmin = "praveen969500@gmail.com"
+      await mailSender(
+      emailadmin,
+      "Please resolve the issue",
+      contactUsEmail(
+        email,
+        firstname,
+        lastname,
+        message,
+        phoneNo,
+        countrycode
+      )
+    );
+
     console.log("Email Response:", emailRes);
 
     return res.status(200).json({
