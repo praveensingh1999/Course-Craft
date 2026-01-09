@@ -14,8 +14,18 @@ import OpenRoute from "./components/core/Auth/OpenRoute";
 import About from "./pages/About";
 import "./App.css";
 import BacktoTop from "./components/common/BacktoTop";
+// import { useDispatch } from "react-redux";
+// import { useNavigate } from "react-router-dom";
+// import { useSelector } from "react-redux";
+import MyProfile from "./components/core/Dashboard/MyProfile";
+import Settings from "./components/core/Dashboard/Settings/Settings";
 
 function App() {
+  //  const dispatch = useDispatch();
+  // const navigate = useNavigate();
+  
+  // const { user } = useSelector((state) => state.profile)
+
   return (
     <div className="w-screen min-h-screen bg-[#0C2B4E] flex flex-col font-inter">
       <Navbar />
@@ -89,7 +99,12 @@ function App() {
               <Dashboard />
             </PrivateRoute>
           }
-        />
+        >
+         
+         <Route path="my-profile" element={<MyProfile />} />
+      
+      <Route path="Settings" element={<Settings />} />
+       </Route>
 
         {/* 404 */}
         <Route path="*" element={<Error />} />
