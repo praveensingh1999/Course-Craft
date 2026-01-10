@@ -20,11 +20,22 @@ import BacktoTop from "./components/common/BacktoTop";
 import MyProfile from "./components/core/Dashboard/MyProfile";
 import Settings from "./components/core/Dashboard/Settings/Settings";
 
+import EnrolledCourses from "./components/core/Dashboard/EnrolledCourses";
+import Cart from "./components/core/Dashboard/Cart/Cart";
+// import AddCourse from "./components/core/Dashboard/AddCourse";
+// import MyCourses from "./components/core/Dashboard/MyCourses";
+// import EditCourse from "./components/core/Dashboard/EditCourse";
+import CourseDetails from "./pages/CourseDetails";
+// import ViewCourse from "./pages/ViewCourse";
+// import VideoDetails from "./components/core/ViewCourse/VideoDetails";
+import { ACCOUNT_TYPE } from "./utils/constant";
+import { useSelector } from "react-redux";
+
 function App() {
   //  const dispatch = useDispatch();
   // const navigate = useNavigate();
   
-  // const { user } = useSelector((state) => state.profile)
+  const { user } = useSelector((state) => state.profile)
 
   return (
     <div className="w-screen min-h-screen bg-[#0C2B4E] flex flex-col font-inter">
@@ -69,6 +80,8 @@ function App() {
             
           }
         />
+        <Route path="courses/:courseId" element={<CourseDetails/>} />
+    
 
         <Route path="/contact" element={<Contact />} />
 
@@ -104,7 +117,47 @@ function App() {
          <Route path="my-profile" element={<MyProfile />} />
       
       <Route path="Settings" element={<Settings />} />
+           {
+        user?.role === ACCOUNT_TYPE.STUDENT && (
+          <>
+          <Route path="cart" element={<Cart />} />
+          <Route path="enrolled-courses" element={<EnrolledCourses />} />
+          </>
+        )
+      }
+
+       {
+        user?.role === ACCOUNT_TYPE.INSTRUCTOR && (
+          <>
+          <Route path="instructor" element={<Instructor />} />
+          {/* <Route path="add-course" element={<AddCourse />} /> */}
+          {/* <Route path="my-courses" element={<MyCourses />} /> */}
+          {/* <Route path="edit-course/:courseId" element={<EditCourse />} /> */}
+          
+          </>
+        )
+      }
+
        </Route>
+
+        {/* <Route element={
+        <PrivateRoute>
+          <ViewCourse />
+        </PrivateRoute>
+      }>
+
+      {
+        user?.accountType === ACCOUNT_TYPE.STUDENT && (
+          <>
+          <Route 
+            path="courseId/section/:sectionId/sub-section/:subSectionId"
+            element={<VideoDetails />}
+          />
+          </>
+        )
+      }
+
+      </Route> */}
 
         {/* 404 */}
         <Route path="*" element={<Error />} />

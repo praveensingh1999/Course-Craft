@@ -33,7 +33,8 @@ function Sidebar() {
       <div className="flex h-[calc(100vh-3.5rem)] min-w-[220px] flex-col border-r border-r-[#2C333F] bg-[#161D29] py-10">
         <div className="flex flex-col">
           {sidebarLinks.map((link) => {
-             if (link.type && user?.ACCOUNT_TYPE !== link.type) return null
+            console.log(user);
+             if (link.type && user?.role !== link.type) return null
             return (
               <SidebarLink key={link.id} link={link} iconName={link.icon} />
             )
