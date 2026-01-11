@@ -22,14 +22,16 @@ import Settings from "./components/core/Dashboard/Settings/Settings";
 
 import EnrolledCourses from "./components/core/Dashboard/EnrolledCourses";
 import Cart from "./components/core/Dashboard/Cart/Cart";
-// import AddCourse from "./components/core/Dashboard/AddCourse";
-// import MyCourses from "./components/core/Dashboard/MyCourses";
+ import AddCourse from "./components/core/Dashboard/AddCourse/AddCourse";
+import MyCourses from "./components/core/Dashboard/MyCourses/MyCourses";
 // import EditCourse from "./components/core/Dashboard/EditCourse";
 import CourseDetails from "./pages/CourseDetails";
 // import ViewCourse from "./pages/ViewCourse";
 // import VideoDetails from "./components/core/ViewCourse/VideoDetails";
 import { ACCOUNT_TYPE } from "./utils/constant";
 import { useSelector } from "react-redux";
+import Instructor from "./components/core/Dashboard/InstructorDashboard/Instructor";
+
 
 function App() {
   //  const dispatch = useDispatch();
@@ -130,9 +132,9 @@ function App() {
         user?.role === ACCOUNT_TYPE.INSTRUCTOR && (
           <>
           <Route path="instructor" element={<Instructor />} />
-          {/* <Route path="add-course" element={<AddCourse />} /> */}
-          {/* <Route path="my-courses" element={<MyCourses />} /> */}
-          {/* <Route path="edit-course/:courseId" element={<EditCourse />} /> */}
+          <Route path="add-course" element={<AddCourse />} /> 
+           <Route path="my-courses" element={<MyCourses />} /> 
+           <Route path="edit-course/:courseId" element={<EditCourse />} />
           
           </>
         )
