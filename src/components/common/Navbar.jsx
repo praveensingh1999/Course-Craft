@@ -79,7 +79,7 @@ function Navbar() {
                               )
                               ?.map((subLink, i) => (
                                 <Link
-                                  to={`/courses/${subLink.name
+                                  to={`/catalog/${subLink.name
                                     .split(" ")
                                     .join("-")
                                     .toLowerCase()}`}

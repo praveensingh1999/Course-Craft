@@ -1,7 +1,7 @@
 import { toast } from "react-hot-toast"
 
 // import { updateCompletedLectures } from "../../slices/viewCourseSlice"
-// import { setLoading } from "../../slices/profileSlice";
+ //import { setLoading } from "../../slices/profileSlice";
 import { apiConnector } from "../apiconnector"
 import { courseEndpoints } from "../apis"
 
@@ -46,6 +46,7 @@ export const fetchCourseDetails = async (courseId) => {
   //   dispatch(setLoading(true));
   let result = null
   try {
+    console.log("courseid=>", courseId);
     const response = await apiConnector("POST", COURSE_DETAILS_API, {
       courseId,
     })
@@ -90,7 +91,7 @@ export const addCourseDetails = async (data, token) => {
   console.log("data", data);
 
   try {
-    
+
     const response = await apiConnector("POST", CREATE_COURSE_API, data, {
       "Content-Type": "multipart/form-data",
       Authorization: `Bearer ${token}`,

@@ -35,7 +35,7 @@ export const auth = async (req, res, next) => {
 			// If JWT verification fails, return 401 Unauthorized response
 			return res
 				.status(401)
-				.json({ success: false, message: "Token is invalid" });
+				.json({ success: false, message: "Token is invalid" , error});
 		}
 
 		// If JWT is valid, move on to the next middleware or request handler
@@ -67,6 +67,7 @@ export const isStudent = async (req, res, next) => {
     return res.status(500).json({
       success: false,
       message: "User Role Can't be Verified",
+      error
     });
   }
 };
@@ -88,6 +89,7 @@ export const isAdmin = async (req, res, next) => {
     return res.status(500).json({
       success: false,
       message: "User Role Can't be Verified",
+      error
     });
   }
 };
@@ -111,6 +113,7 @@ export const isInstructor = async (req, res, next) => {
     return res.status(500).json({
       success: false,
       message: "User Role Can't be Verified",
+      error
     });
   }
 };

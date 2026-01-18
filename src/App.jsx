@@ -14,8 +14,8 @@ import OpenRoute from "./components/core/Auth/OpenRoute";
 import About from "./pages/About";
 import "./App.css";
 import BacktoTop from "./components/common/BacktoTop";
-import { useDispatch } from "react-redux";
-import { useNavigate } from "react-router-dom";
+// import { useDispatch } from "react-redux";
+// import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import MyProfile from "./components/core/Dashboard/MyProfile";
 import Settings from "./components/core/Dashboard/Settings/Settings";
@@ -29,6 +29,7 @@ import CourseDetails from "./pages/CourseDetails";
 import ViewCourse from "./pages/ViewCourse";
 import VideoDetails from "./components/core/ViewCourse/VideoDetails";
 import { ACCOUNT_TYPE } from "./utils/constant";
+import Catalog from "./pages/Catalog";
 
 import Instructor from "./components/core/Dashboard/InstructorDashboard/Instructor";
 
@@ -47,6 +48,7 @@ function App() {
       <Routes>
         {/* Open routes */}
         <Route path="/" element={<Home />} />
+         <Route path="catalog/:catalogName" element={<Catalog/>} />
 
         <Route
           path="/signup"
