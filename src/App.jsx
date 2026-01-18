@@ -14,9 +14,9 @@ import OpenRoute from "./components/core/Auth/OpenRoute";
 import About from "./pages/About";
 import "./App.css";
 import BacktoTop from "./components/common/BacktoTop";
-// import { useDispatch } from "react-redux";
-// import { useNavigate } from "react-router-dom";
-// import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 import MyProfile from "./components/core/Dashboard/MyProfile";
 import Settings from "./components/core/Dashboard/Settings/Settings";
 
@@ -24,12 +24,12 @@ import EnrolledCourses from "./components/core/Dashboard/EnrolledCourses";
 import Cart from "./components/core/Dashboard/Cart/Cart";
  import AddCourse from "./components/core/Dashboard/AddCourse/AddCourse";
 import MyCourses from "./components/core/Dashboard/MyCourses/MyCourses";
-// import EditCourse from "./components/core/Dashboard/EditCourse";
+import EditCourse from "./components/core/Dashboard/EditCourse/EditCourse";
 import CourseDetails from "./pages/CourseDetails";
-// import ViewCourse from "./pages/ViewCourse";
-// import VideoDetails from "./components/core/ViewCourse/VideoDetails";
+import ViewCourse from "./pages/ViewCourse";
+import VideoDetails from "./components/core/ViewCourse/VideoDetails";
 import { ACCOUNT_TYPE } from "./utils/constant";
-import { useSelector } from "react-redux";
+
 import Instructor from "./components/core/Dashboard/InstructorDashboard/Instructor";
 
 
@@ -142,7 +142,7 @@ function App() {
 
        </Route>
 
-        {/* <Route element={
+        <Route element={
         <PrivateRoute>
           <ViewCourse />
         </PrivateRoute>
@@ -159,7 +159,7 @@ function App() {
         )
       }
 
-      </Route> */}
+      </Route>
 
         {/* 404 */}
         <Route path="*" element={<Error />} />

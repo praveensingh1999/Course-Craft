@@ -59,7 +59,7 @@ function MyProfile() {
           {user?.additionalDetails?.about ?? "Write Something About Yourself"}
         </p>
       </div>
-      <div className="my-10 flex flex-col gap-y-10 rounded-md border border-[#2C333F] bg-[161D29] p-8 px-12">
+      <div className="my-10 flex flex-col gap-y-10 rounded-md border border-[#2C333F] bg-[#161D29] p-8 px-12">
         <div className="flex w-full items-center justify-between">
           <p className="text-lg font-semibold text-[#F1F2FF]">
             Personal Details

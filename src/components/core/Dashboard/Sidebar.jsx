@@ -46,7 +46,7 @@ function Sidebar() {
             link={{ name: "Settings", path: "/dashboard/settings" }}
             iconName="VscSettingsGear"
           />
-          <button
+          <button 
             onClick={() =>
               setConfirmationModal({
                 text1: "Are you sure?",

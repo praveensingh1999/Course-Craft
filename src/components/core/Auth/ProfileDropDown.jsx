@@ -26,16 +26,16 @@ function ProfileDropDown() {
           alt={`profile-${user?.firstName}`}
           className="aspect-square w-[30px] rounded-full object-cover"
         />
-        <AiOutlineCaretDown className="text-sm text-richblack-100" />
+        <AiOutlineCaretDown className="text-sm text-[#AFB2BF]" />
       </div>
       {open && (
         <div
           onClick={(e) => e.stopPropagation()}
-          className="absolute top-[118%] right-0 z-1000 divide-y divide-richblack-700 overflow-hidden rounded-md border border-richblack-700 bg-richblack-800"
+          className="absolute top-[118%] right-0 z-1000 divide-y divide-[#2C333F] overflow-hidden rounded-md border border-[#2C333F] bg-[#161D29]"
           ref={ref}
         >
           <Link to="/dashboard/my-profile" onClick={() => setOpen(false)}>
-            <div className="flex w-full items-center gap-x-1 py-2.5 px-3 text-sm text-richblack-100 hover:bg-richblack-700 hover:text-richblack-25">
+            <div className="flex w-full items-center gap-x-1 py-2.5 px-3 text-sm text-[#AFB2BF] hover:bg-[#2C333F] hover:text-[#DBDDEA]">
               <VscDashboard className="text-lg" />
               Dashboard
             </div>
@@ -45,7 +45,7 @@ function ProfileDropDown() {
               dispatch(logout(navigate))
               setOpen(false)
             }}
-            className="flex w-full items-center gap-x-1 py-2.5 px-3 text-sm text-richblack-100 hover:bg-richblack-700 hover:text-richblack-25"
+            className="flex w-full items-center gap-x-1 py-2.5 px-3 text-sm text-[#AFB2BF] hover:bg-[#2C333F] hover:text-[#DBDDEA]"
           >
             <VscSignOut className="text-lg" />
             Logout

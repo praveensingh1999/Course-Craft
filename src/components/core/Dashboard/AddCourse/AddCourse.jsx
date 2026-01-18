@@ -1,5 +1,6 @@
 import React from 'react'
 import RenderSteps from "./RenderSteps"
+import Footer from '../../../common/Footer'
 function AddCourse() {
   return (
      <>
@@ -32,7 +33,10 @@ function AddCourse() {
             <li>Notes to all enrolled students at once.</li>
           </ul>
         </div>
+        
       </div>
+      <Footer/>
+      
     </>
   )
 }

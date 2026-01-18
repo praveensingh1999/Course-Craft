@@ -81,7 +81,7 @@ function CourseInformationForm() {
 
   //   handle next button click
   const onSubmit = async (data) => {
-    // console.log(data)
+    // console.log("inside handle submit",data)
 
     if (editCourse) {
       // const currentValues = getValues()
@@ -148,6 +148,7 @@ function CourseInformationForm() {
     formData.append("instructions", JSON.stringify(data.courseRequirements))
     formData.append("thumbnailImage", data.courseImage)
     setLoading(true)
+    console.log("formdata value", formData );
     const result = await addCourseDetails(formData, token)
     if (result) {
       dispatch(setStep(2))

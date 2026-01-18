@@ -15,6 +15,7 @@ import { convertSecondsToDuration } from "../utils/secToDuration.js";
 // ----------------------------
 export const createCourse = async (req, res) => {
   try {
+    console.log("controller");
     const userId = req.user.id;
     let {
       courseName,
