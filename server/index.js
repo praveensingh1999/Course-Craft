@@ -10,7 +10,7 @@ import { cloudinaryConnect } from "./config/cloudinary.js";
 import userRoutes from "./routes/User.js";
 import profileRoutes from "./routes/Profile.js";
 import paymentRoutes from "./routes/payment.js";
-import courseRoutes from "./routes/Course.js";
+import courseRoutes from "./routes/course.js";
 import contactUsRoute from "./routes/Contact.js";
 
 dotenv.config();
@@ -54,7 +54,7 @@ cloudinaryConnect();
 app.use("/api/v1/auth", userRoutes);
 app.use("/api/v1/profile", profileRoutes);
 app.use("/api/v1/course", courseRoutes);
-app.use("/api/v1/payment", paymentRoutes);
+app.use("/api/v1/payment", paymentRoutes); 
 app.use("/api/v1/reach", contactUsRoute);
 
 // ================================

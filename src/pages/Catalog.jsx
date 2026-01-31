@@ -44,9 +44,10 @@ function Catalog() {
       console.log("categories_id", categoryId);
 
       const res = await getCatalogaPageData(categoryId);
+      // console.log("data course", res);
       setCatalogPageData(res);
     } catch (error) {
-      console.log("here i get error", error);
+      console.log("catalog page error occur", error);
     }
   };
 

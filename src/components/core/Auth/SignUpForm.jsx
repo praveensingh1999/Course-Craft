@@ -15,7 +15,7 @@ function SignUpForm() {
   const dispatch = useDispatch()
 
   // student or instructor
-  const [accountType, setAccountType] = useState(ACCOUNT_TYPE.STUDENT)
+  const [role, setrole] = useState(ACCOUNT_TYPE.STUDENT)
 
   const [formData, setFormData] = useState({
     firstName: "",
@@ -48,12 +48,13 @@ function SignUpForm() {
     }
     const signupData = {
       ...formData,
-      accountType,
+      role,
     }
-
+console.log("signupdata",signupData);
     // Setting signup data to state
     // To be used after otp verification
     dispatch(setSignupData(signupData))
+   
     // Send OTP to user for verification
     dispatch(sendOtp(formData.email, navigate))
 
@@ -65,7 +66,7 @@ function SignUpForm() {
       password: "",
       confirmPassword: "",
     })
-    setAccountType(ACCOUNT_TYPE.STUDENT)
+    setrole(ACCOUNT_TYPE.STUDENT)
   }
 
   // data to pass to Tab component
@@ -86,7 +87,7 @@ function SignUpForm() {
   return (
      <div>
       {/* Tab */}
-      <Tab tabData={tabData} field={accountType} setField={setAccountType} />
+      <Tab tabData={tabData} field={role} setField={setrole} />
       {/* Form */}
       <form onSubmit={handleOnSubmit} className="flex w-full flex-col gap-y-4">
         <div className="flex gap-x-4">

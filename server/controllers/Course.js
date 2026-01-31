@@ -148,7 +148,7 @@ export const editCourse = async (req, res) => {
         populate: { path: "additionalDetails" },
       })
       .populate("category")
-      .populate("ratingAndReviews")
+      // .populate("ratingAndReviews")
       .populate({
         path: "courseContent",
         populate: { path: "subSection" },
@@ -249,7 +249,9 @@ export const getCourseDetails = async (req, res) => {
 // ----------------------------
 export const getFullCourseDetails = async (req, res) => {
   try {
+    
     const { courseId } = req.body;
+    console.log("courseid",courseId);
     const userId = req.user.id;
 
     const courseDetails = await Course.findById(courseId)
@@ -258,7 +260,7 @@ export const getFullCourseDetails = async (req, res) => {
         populate: { path: "additionalDetails" },
       })
       .populate("category")
-      .populate("ratingAndReviews")
+      // .populate("ratingAndReviews")
       .populate({
         path: "courseContent",
         populate: { path: "subSection" },

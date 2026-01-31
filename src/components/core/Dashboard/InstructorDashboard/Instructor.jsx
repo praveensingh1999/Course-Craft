@@ -57,7 +57,7 @@ function Instructor() {
               ) : (
                 <div className="flex-1 rounded-md bg-[#161D29] p-6">
                   <p className="text-lg font-bold text-[#F1F2FF]">Visualize</p>
-                  <p className="mt-4 text-xl font-medium text-[#F1F2FF]0">
+                  <p className="mt-4 text-xl font-medium text-[#F1F2FF]">
                     Not Enough Data To Visualize
                   </p>
                 </div>
@@ -68,7 +68,7 @@ function Instructor() {
                 <div className="mt-4 space-y-4">
                   <div>
                     <p className="text-lg text-[#999DAA]">Total Courses</p>
-                    <p className="text-3xl font-semibold text-[#F1F2FF]0">
+                    <p className="text-3xl font-semibold text-[#F1F2FF]">
                       {courses.length}
                     </p>
                   </div>
@@ -80,7 +80,7 @@ function Instructor() {
                   </div>
                   <div>
                     <p className="text-lg text-[#999DAA]">Total Income</p>
-                    <p className="text-3xl font-semibold text-[#F1F2FF]0">
+                    <p className="text-3xl font-semibold text-[#F1F2FF]">
                       Rs. {totalAmount}
                     </p>
                   </div>
@@ -104,7 +104,7 @@ function Instructor() {
                       className="h-[201px] w-full rounded-md object-cover"
                     />
                     <div className="mt-3 w-full">
-                      <p className="text-sm font-medium text-[#F1F2FF]0">
+                      <p className="text-sm font-medium text-[#F1F2FF]">
                         {course.courseName}
                       </p>
                       <div className="mt-1 flex items-center space-x-2">

@@ -38,13 +38,13 @@ function CourseTable({ courses, setCourses }) {
     setLoading(false)
   }
 
-  // console.log("All Course ", courses)
+   console.log("All Course ", courses)
 
   return (
      <>
-      <Table className="rounded-xl border border-[#161D29] ">
+      <Table className="rounded-xl border border-[rgb(217,220,227)] ">
         <Thead>
-          <Tr className="flex gap-x-10 rounded-t-md border-b border-b-[#161D29] px-6 py-2">
+          <Tr className="flex gap-x-10 rounded-t-md border-b border-b-[#0f1520] px-6 py-2">
             <Th className="flex-1 text-left text-sm font-medium uppercase text-[#AFB2BF]">
               Courses
             </Th>

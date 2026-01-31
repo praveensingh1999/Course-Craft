@@ -11,6 +11,7 @@ import { setCourse, setEditCourse } from "../../../../slices/courseSlice"
 import RenderSteps from "../AddCourse/RenderSteps"
 
 function EditCourse() {
+  
       const dispatch = useDispatch()
   const { courseId } = useParams()
   const { course } = useSelector((state) => state.course)
@@ -29,7 +30,7 @@ function EditCourse() {
     })()
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
-
+console.log("edit course");
   if (loading) {
     return (
       <div className="grid flex-1 place-items-center">

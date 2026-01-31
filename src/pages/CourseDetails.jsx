@@ -1,5 +1,7 @@
 import React from 'react'
 import { useEffect, useState } from "react"
+import { toast } from "react-hot-toast"
+import { ACCOUNT_TYPE } from "../utils/constant"
 import { BiInfoCircle } from "react-icons/bi"
 import { HiOutlineGlobeAlt } from "react-icons/hi"
 // import { ReactMarkdown } from "react-markdown/lib/react-markdown"
@@ -39,7 +41,7 @@ function CourseDetails() {
     ;(async () => {
       try {
         const res = await fetchCourseDetails(courseId)
-        // console.log("course details res: ", res)
+         console.log("course details res: ", res)
         setResponse(res)
       } catch (error) {
         console.log("Could not fetch Course Details", error);
@@ -47,7 +49,7 @@ function CourseDetails() {
     })()
   }, [courseId])
 
-  // console.log("response: ", response)
+  console.log("response: ", response)
 
   // Calculating Avg Review count
   const [avgReviewCount, setAvgReviewCount] = useState(0)
@@ -105,6 +107,10 @@ function CourseDetails() {
   } = response.data?.courseDetails
 
   const handleBuyCourse = () => {
+     if (user && user?.role === ACCOUNT_TYPE.INSTRUCTOR) {
+          toast.error("You are an Instructor. You can't buy a course.")
+          return
+        }
     if (token) {
       buyCourse(token, [courseId], user, navigate, dispatch)
       return
@@ -119,6 +125,7 @@ function CourseDetails() {
     })
   }
 
+  
   if (paymentLoading) {
     // console.log("payment loading")
     return (
@@ -242,23 +249,32 @@ function CourseDetails() {
 
             {/* Author Details */}
             <div className="mb-12 py-4">
-              <p className="text-[28px] font-semibold">Author</p>
-              <div className="flex items-center gap-4 py-4">
-                <img
-                  src={
-                    instructor.image
-                      ? instructor.image
-                      : `https://api.dicebear.com/5.x/initials/svg?seed=${instructor.firstName} ${instructor.lastName}`
-                  }
-                  alt="Author"
-                  className="h-14 w-14 rounded-full object-cover"
-                />
-                <p className="text-lg">{`${instructor.firstName} ${instructor.lastName}`}</p>
-              </div>
-              <p className="text-[#F1F2FF]0">
-                {instructor?.additionalDetails?.about}
-              </p>
-            </div>
+  <p className="text-[28px] font-semibold">Author</p>
+
+  <div className="flex items-center gap-4 py-4">
+    <img
+      src={
+        instructor.image
+          ? instructor.image
+          : `https://api.dicebear.com/5.x/initials/svg?seed=${instructor.firstName} ${instructor.lastName}`
+      }
+      alt="Author"
+      className="h-14 w-14 rounded-full object-cover"
+    />
+
+    {/* NAME + ABOUT */}
+    <div className="flex flex-col">
+      <p className="text-lg font-medium">
+        {`${instructor.firstName} ${instructor.lastName}`}
+      </p>
+
+      <p className="text-[#F1F2FF] text-sm">
+        {instructor?.additionalDetails?.about}
+      </p>
+    </div>
+  </div>
+</div>
+
           </div>
         </div>
       </div>

@@ -22,7 +22,7 @@ export const signup = async (req, res) => {
       password,
       confirmPassword,
       role,
-      contactNumber,
+      
       otp,
     } = req.body;
 

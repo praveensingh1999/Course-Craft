@@ -43,7 +43,7 @@ export function sendOtp(email, navigate) {
 }
 
 export function signUp(
-  accountType,
+  role,
   firstName,
   lastName,
   email,
@@ -56,8 +56,9 @@ export function signUp(
     const toastId = toast.loading("Loading...")
     dispatch(setLoading(true))
     try {
+      console.log("auth api", role, firstName, lastName, email,password, confirmPassword,otp);
       const response = await apiConnector("POST", SIGNUP_API, {
-        accountType,
+        role,
         firstName,
         lastName,
         email,

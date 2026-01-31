@@ -117,9 +117,9 @@ function Navbar() {
         <div className="hidden items-center gap-x-4 md:flex">
           {user && user?.role !== ACCOUNT_TYPE.INSTRUCTOR && (
             <Link to="/dashboard/cart" className="relative">
-              <AiOutlineShoppingCart className="text-2xl text-[#AFB2BF]" />
+              <AiOutlineShoppingCart className="text-2xl text-[#787d92]" />
               {totalItems > 0 && (
-                <span className="absolute -bottom-2 -right-2 grid h-5 w-5 place-items-center overflow-hidden rounded-full bg-[#424854] text-center text-xs font-bold text-[#E7C009]">
+                <span className="absolute -bottom-1 -right-2 grid h-5 w-5 place-items-center overflow-hidden rounded-full bg-[#1c376f] text-center text-xs font-bold text-[#22f93b]">
                   {totalItems}
                 </span>
               )}

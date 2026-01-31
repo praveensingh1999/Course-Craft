@@ -20,7 +20,7 @@ export const updateProfile = async (req, res) => {
     } = req.body
 
     const id = req.user.id
-
+console.log("dob", typeof dateOfBirth, dateOfBirth);
     // Find user and profile
     const userDetails = await User.findById(id)
     const profile = await Profile.findById(userDetails.additionalDetails)
@@ -236,10 +236,11 @@ export const getEnrolledCourses = async (req, res) => {
 // ================================
 export const instructorDashboard = async (req, res) => {
   try {
+       console.log("inside instructor");
     const courses = await Course.find({ instructor: req.user.id })
 
     const courseData = courses.map((course) => {
-      const totalStudentsEnrolled = course.studentsEnroled.length
+      const totalStudentsEnrolled = course.studentsEnrolled.length
       const totalAmountGenerated = totalStudentsEnrolled * course.price
 
       return {

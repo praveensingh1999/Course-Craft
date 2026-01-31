@@ -3,11 +3,11 @@ import axios from "axios"
 export const axiosInstance = axios.create({});
 
 export const apiConnector = (method, url, bodyData, headers, params) => {
-     console.log("bodydata =>", bodyData);
-
-  console.log("TOKEN ONLY =>", bodyData);
-
-    console.log("inside api connector", headers);
+    console.log("method=>", method);
+    console.log("url=>",url);
+    console.log("bodyData=>", bodyData);
+    console.log("header=>", headers);
+    console.log("params=>", params);
     return axiosInstance({
         method:`${method}`,
         url:`${url}`,

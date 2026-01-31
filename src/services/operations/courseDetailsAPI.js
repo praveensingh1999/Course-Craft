@@ -43,7 +43,7 @@ export const getAllCourses = async () => {
 
 export const fetchCourseDetails = async (courseId) => {
   const toastId = toast.loading("Loading...")
-  //   dispatch(setLoading(true));
+   //  dispatch(setLoading(true));
   let result = null
   try {
     console.log("courseid=>", courseId);
@@ -113,9 +113,11 @@ export const addCourseDetails = async (data, token) => {
 
 // edit the course details
 export const editCourseDetails = async (data, token) => {
+  console.log("hello");
   let result = null
   const toastId = toast.loading("Loading...")
   try {
+    console.log("token=>>", token, data);
     const response = await apiConnector("POST", EDIT_COURSE_API, data, {
       "Content-Type": "multipart/form-data",
       Authorization: `Bearer ${token}`,
@@ -316,6 +318,7 @@ export const getFullDetailsOfCourse = async (courseId, token) => {
   //   dispatch(setLoading(true));
   let result = null
   try {
+    console.log("inside course details api");
     const response = await apiConnector(
       "POST",
       GET_FULL_COURSE_DETAILS_AUTHENTICATED,
@@ -326,6 +329,8 @@ export const getFullDetailsOfCourse = async (courseId, token) => {
         Authorization: `Bearer ${token}`,
       }
     )
+
+
     console.log("COURSE_FULL_DETAILS_API API RESPONSE............", response)
 
     if (!response.data.success) {
