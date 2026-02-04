@@ -41,7 +41,7 @@ function CourseDetails() {
     ;(async () => {
       try {
         const res = await fetchCourseDetails(courseId)
-         console.log("course details res: ", res)
+         //console.log("course details res: ", res)
         setResponse(res)
       } catch (error) {
         console.log("Could not fetch Course Details", error);
@@ -49,7 +49,7 @@ function CourseDetails() {
     })()
   }, [courseId])
 
-  console.log("response: ", response)
+ // console.log("response: ", response)
 
   // Calculating Avg Review count
   const [avgReviewCount, setAvgReviewCount] = useState(0)

@@ -50,7 +50,7 @@ function SignUpForm() {
       ...formData,
       role,
     }
-console.log("signupdata",signupData);
+//console.log("signupdata",signupData);
     // Setting signup data to state
     // To be used after otp verification
     dispatch(setSignupData(signupData))

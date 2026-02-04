@@ -1,5 +1,5 @@
 export default function GetAvgRating(ratingArr = []) {
-  console.log("ratingArrhjh", ratingArr);
+  //console.log("ratingArrhjh", ratingArr);
 
   // guard checks
   if (!Array.isArray(ratingArr) || ratingArr.length === 0) return 0;
@@ -16,7 +16,7 @@ export default function GetAvgRating(ratingArr = []) {
     0
   );
 
-  console.log("totalReviewCount", totalReviewCount);
+  //console.log("totalReviewCount", totalReviewCount);
 
   // round to 1 decimal
   const avgReviewCount =

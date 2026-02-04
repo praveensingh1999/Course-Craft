@@ -30,7 +30,7 @@ function EditCourse() {
     })()
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
-console.log("edit course");
+//console.log("edit course");
   if (loading) {
     return (
       <div className="grid flex-1 place-items-center">

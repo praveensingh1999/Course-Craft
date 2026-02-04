@@ -11,7 +11,7 @@ import { useSelector } from "react-redux"
 import Error from "./Error"
 
 function Catalog() {
-    console.log("inside catalog");
+   // console.log("inside catalog");
     const { loading } = useSelector((state) => state.profile)
   const { catalogName } = useParams()
   const [active, setActive] = useState(1)
@@ -21,7 +21,7 @@ function Catalog() {
     //Fetch all categories
     useEffect(() => {
   const getCategories = async () => {
-    console.log("inside useeffect");
+   // console.log("inside useeffect");
 
     const res = await apiConnector("GET", categories.CATEGORIES_API);
 
@@ -40,8 +40,8 @@ function Catalog() {
    useEffect(() => {
   const getCategoryDetails = async () => {
     try {
-      console.log("outside");
-      console.log("categories_id", categoryId);
+      //console.log("outside");
+      //console.log("categories_id", categoryId);
 
       const res = await getCatalogaPageData(categoryId);
       // console.log("data course", res);

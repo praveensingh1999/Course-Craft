@@ -24,7 +24,7 @@ export const createSubSection = async (req, res) => {
       video,
       process.env.FOLDER_NAME
     )
-    console.log(uploadDetails);
+    //console.log(uploadDetails);
 
     // Create SubSection
     const subSectionDetails = await SubSection.create({

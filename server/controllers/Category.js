@@ -54,7 +54,7 @@ export const showAllCategories = async (req, res) => {
 export const categoryPageDetails = async (req, res) => {
   try {
     const { categoryId } = req.body;
-    console.log("PRINTING CATEGORY ID:", categoryId);
+    // console.log("PRINTING CATEGORY ID:", categoryId);
 
     // Selected category
     const selectedCategory = await Category.findById(categoryId)

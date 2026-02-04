@@ -18,7 +18,7 @@ export const auth = async (req, res, next) => {
 			req.cookies?.token ||
 			req.body?.token ||
 			req.header("Authorization")?.replace("Bearer ", "");
-      console.log('inside auth', token);
+     // console.log('inside auth', token);
 
 		// If JWT is missing, return 401 Unauthorized response
 		if (!token) {
@@ -98,8 +98,8 @@ export const isAdmin = async (req, res, next) => {
 export const isInstructor = async (req, res, next) => {
   try {
     const userDetails = await User.findOne({ email: req.user.email });
-    console.log(userDetails);
-    console.log(userDetails.role);
+    //console.log(userDetails);
+   // console.log(userDetails.role);
 
     if (userDetails.role !== "Instructor") {
       return res.status(401).json({

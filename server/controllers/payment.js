@@ -21,12 +21,12 @@ import CourseProgress from "../models/CourseProgress.js";
    CREATE ORDER
 ===================================================== */
 export const capturePayment = async (req, res) => {
-  console.log("=== PAYMENT START ===");
+  //console.log("=== PAYMENT START ===");
   try {
      
 
-    console.log("BODY:", req.body);
-    console.log("USER:", req.user);
+  //  console.log("BODY:", req.body);
+  //  console.log("USER:", req.user);
 
     const { courses } = req.body;
     const userId = req.user.id;

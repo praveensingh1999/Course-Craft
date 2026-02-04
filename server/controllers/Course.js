@@ -15,7 +15,7 @@ import { convertSecondsToDuration } from "../utils/secToDuration.js";
 // ----------------------------
 export const createCourse = async (req, res) => {
   try {
-    console.log("controller");
+   // console.log("controller");
     const userId = req.user.id;
     let {
       courseName,
@@ -251,7 +251,7 @@ export const getFullCourseDetails = async (req, res) => {
   try {
     
     const { courseId } = req.body;
-    console.log("courseid",courseId);
+    // console.log("courseid",courseId);
     const userId = req.user.id;
 
     const courseDetails = await Course.findById(courseId)

@@ -7,7 +7,7 @@ export const getCatalogaPageData = async(categoryId) => {
   const toastId = toast.loading("Loading...");
   let result = [];
   try{
-    console.log("pageandcomponentdata", categoryId);
+   // console.log("pageandcomponentdata", categoryId);
         const response = await apiConnector("POST", catalogData.CATALOGPAGEDATA_API, 
         {categoryId: categoryId,});
           

@@ -76,7 +76,7 @@ export const resetPassword = async(req, res)=>{
         message: 'Token is invalid',
       })
     }
-    console.log(userDetails);
+    //console.log(userDetails);
   // token time check
   if(userDetails.resetPasswordExpires < Date.now()){
      return res.json({

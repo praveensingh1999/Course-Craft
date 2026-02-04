@@ -12,7 +12,7 @@ export const contactUsController = async (req, res) => {
       countrycode,
     } = req.body;
 
-    const emailRes = await mailSender(
+    await mailSender(
       email,
       "Your data sent successfully",
       contactUsEmail(
@@ -40,7 +40,7 @@ export const contactUsController = async (req, res) => {
       )
     );
 
-    console.log("Email Response:", emailRes);
+    // console.log("Email Response:", emailRes);
 
     return res.status(200).json({
       success: true,

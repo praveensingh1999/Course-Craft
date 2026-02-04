@@ -30,7 +30,7 @@ export async function buyCourse(token, courses, userDetails, navigate, dispatch)
       return;
     }
     
-console.log("courses", courses);
+//console.log("courses", courses);
     // 2️⃣ Create order on backend
     const orderResponse = await apiConnector(
       "POST",
@@ -38,14 +38,14 @@ console.log("courses", courses);
       { courses },
       { Authorization: `Bearer ${token}` }
     );
-    console.log("loading sdk1");
+   // console.log("loading sdk1");
     if (!orderResponse?.data?.success) {
       throw new Error(orderResponse?.data?.message || "Order creation failed");
     }
 
     const order = orderResponse.data.message;
-    console.log("order data", order);
-console.log("RAZORPAY KEY 👉", import.meta.env.VITE_RAZORPAY_KEY);
+   // console.log("order data", order);
+//console.log("RAZORPAY KEY 👉", import.meta.env.VITE_RAZORPAY_KEY);
     // 3️⃣ Configure Razorpay options
     const options = {
        key: import.meta.env.VITE_RAZORPAY_KEY,
