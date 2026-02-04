@@ -35,7 +35,7 @@ function AddCourse() {
         </div>
         
       </div>
-      <Footer/>
+     
       
     </>
   )

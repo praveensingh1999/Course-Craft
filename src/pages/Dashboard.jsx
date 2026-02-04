@@ -16,14 +16,20 @@ function Dashboard() {
   }
 
   return (
-    <div className="relative flex min-h-[calc(100vh-3.5rem)]">
-      <Sidebar />
-      <div className="h-[calc(100vh-3.5rem)] flex-1 overflow-auto">
-        <div className="mx-auto w-11/12 max-w-[1000px] py-10">
-          <Outlet />
-        </div>
+    <div className="relative flex min-h-screen w-full bg-[#000814]">
+  {/* Sidebar */}
+  <Sidebar />
+
+  {/* Main Content */}
+  <div className="flex flex-1 flex-col overflow-hidden">
+    {/* Scrollable Area */}
+    <div className="flex-1 overflow-y-auto">
+      <div className="mx-auto w-full max-w-[1260px] px-4 py-6 sm:px-6 lg:px-8">
+        <Outlet />
       </div>
     </div>
+  </div>
+</div>
   )
 }
 

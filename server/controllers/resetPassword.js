@@ -84,7 +84,7 @@ export const resetPassword = async(req, res)=>{
       message: `Token is expired, please regenerate your token`,
      });
   }
-  console.log("here");
+  //console.log("here");
   // hash pwd
    const hashedPassword = await bcrypt.hash(password, 10);
   // password update

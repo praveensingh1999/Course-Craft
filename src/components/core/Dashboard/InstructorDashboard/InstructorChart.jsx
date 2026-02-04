@@ -1,58 +1,62 @@
-import React from 'react'
-import { useState } from "react"
-import { Chart, registerables } from "chart.js"
-import { Pie } from "react-chartjs-2"
+import React, { useState, useMemo } from "react";
+import { Chart, registerables } from "chart.js";
+import { Pie } from "react-chartjs-2";
 
-Chart.register(...registerables)
+Chart.register(...registerables);
 
 function InstructorChart({ courses }) {
-   // State to keep track of the currently selected chart
-  const [currChart, setCurrChart] = useState("students")
+  const [currChart, setCurrChart] = useState("students");
 
-  // Function to generate random colors for the chart
-  const generateRandomColors = (numColors) => {
-    const colors = []
-    for (let i = 0; i < numColors; i++) {
-      const color = `rgb(${Math.floor(Math.random() * 256)}, ${Math.floor(
-        Math.random() * 256
-      )}, ${Math.floor(Math.random() * 256)})`
-      colors.push(color)
-    }
-    return colors
-  }
+  // Generate random colors only once using useMemo
+  const chartColors = useMemo(() => {
+    return courses.map(
+      () =>
+        `rgb(${Math.floor(Math.random() * 256)}, ${Math.floor(
+          Math.random() * 256
+        )}, ${Math.floor(Math.random() * 256)})`
+    );
+  }, [courses]);
 
-  // Data for the chart displaying student information
-  const chartDataStudents = {
-    labels: courses.map((course) => course.courseName),
-    datasets: [
-      {
-        data: courses.map((course) => course.totalStudentsEnrolled),
-        backgroundColor: generateRandomColors(courses.length),
-      },
-    ],
-  }
+  const chartDataStudents = useMemo(() => {
+    return {
+      labels: courses.map((course) => course.courseName),
+      datasets: [
+        {
+          data: courses.map((course) => course.totalStudentsEnrolled),
+          backgroundColor: chartColors,
+        },
+      ],
+    };
+  }, [courses, chartColors]);
 
-  // Data for the chart displaying income information
-  const chartIncomeData = {
-    labels: courses.map((course) => course.courseName),
-    datasets: [
-      {
-        data: courses.map((course) => course.totalAmountGenerated),
-        backgroundColor: generateRandomColors(courses.length),
-      },
-    ],
-  }
+  const chartIncomeData = useMemo(() => {
+    return {
+      labels: courses.map((course) => course.courseName),
+      datasets: [
+        {
+          data: courses.map((course) => course.totalAmountGenerated),
+          backgroundColor: chartColors,
+        },
+      ],
+    };
+  }, [courses, chartColors]);
 
-  // Options for the chart
   const options = {
-    maintainAspectRatio: false,
-  }
+    maintainAspectRatio: false, // important to fill parent container
+    plugins: {
+      legend: {
+        position: "bottom",
+        labels: {
+          color: "#F1F2FF",
+        },
+      },
+    },
+  };
 
   return (
-    <div className="flex flex-1 flex-col gap-y-4 rounded-md bg-[#161D29] p-6">
+    <div className="flex flex-col gap-y-6 h-full">
       <p className="text-lg font-bold text-[#F1F2FF]">Visualize</p>
       <div className="space-x-4 font-semibold">
-        {/* Button to switch to the "students" chart */}
         <button
           onClick={() => setCurrChart("students")}
           className={`rounded-sm p-1 px-3 transition-all duration-200 ${
@@ -63,7 +67,6 @@ function InstructorChart({ courses }) {
         >
           Students
         </button>
-        {/* Button to switch to the "income" chart */}
         <button
           onClick={() => setCurrChart("income")}
           className={`rounded-sm p-1 px-3 transition-all duration-200 ${
@@ -75,15 +78,16 @@ function InstructorChart({ courses }) {
           Income
         </button>
       </div>
-      <div className="relative mx-auto aspect-square h-full w-full">
-        {/* Render the Pie chart based on the selected chart */}
+
+      {/* Chart Container */}
+      <div className="h-[220px] w-full">
         <Pie
           data={currChart === "students" ? chartDataStudents : chartIncomeData}
           options={options}
         />
       </div>
     </div>
-  )
+  );
 }
 
-export default InstructorChart
+export default InstructorChart;

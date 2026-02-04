@@ -7,7 +7,7 @@ import { Link } from "react-router-dom"
 import Banner from "../assets/Images/banner.mp4"
 // Component Imports
  import Footer from "../components/common/Footer"
-//import ReviewSlider from "../components/common/ReviewSlider"
+import ReviewSlider from "../components/common/ReviewSlider"
 
 import CTAButton from "../components/core/HomePage/Button"
  import CodeBlocks from "../components/core/HomePage/CodeBlocks"
@@ -20,7 +20,7 @@ import HighlightText from "../components/core/HomePage/HighlightText"
 
 
 function Home() {
-  console.log("inside home");
+ // console.log("inside home");
   return (
      <div>
       {/* Section 1 */}
@@ -190,7 +190,7 @@ function Home() {
         <h1 className="text-center text-4xl font-semibold mt-8">
           Reviews from other learners
         </h1>
-        {/* <ReviewSlider /> */}
+        <ReviewSlider />
 
         </div>
          {/* Footer */}

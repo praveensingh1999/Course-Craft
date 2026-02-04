@@ -160,7 +160,7 @@ function CourseInformationForm() {
   return (
      <form
       onSubmit={handleSubmit(onSubmit)}
-      className="space-y-8 rounded-md border border-[#2C333F] bg-[#161D29] p-6"
+      className="space-y-8 rounded-md border border-[#eef0f4] bg-[#161D29] p-6 text-white"
     >
       {/* Course Title */}
       <div className="flex flex-col space-y-2">
@@ -171,7 +171,7 @@ function CourseInformationForm() {
           id="courseTitle"
           placeholder="Enter Course Title"
           {...register("courseTitle", { required: true })}
-          className="form-style w-full"
+          className="form-style w-full "
         />
         {errors.courseTitle && (
           <span className="ml-2 text-xs tracking-wide text-[#EF476F]">

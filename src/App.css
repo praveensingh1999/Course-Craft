@@ -39,17 +39,22 @@ details > summary::-webkit-details-marker {
   display: none;
 }
 
-/* https://10015.io/tools/css-loader-generator */
+/* Loader */
 .spinner {
-  width: 56px;
-  height: 56px;
+  
+ width: 48px;
+  height: 48px;
+  border: 5px solid rgba(241, 242, 255, 0.3);
+  border-top: 5px solid #f1f2ff;
   border-radius: 50%;
-  border: 9px solid #f1f2ff;
-  animation: spinner-bulqg1 0.8s infinite linear alternate,
-    spinner-oaa3wk 1.6s infinite linear;
+  animation: spin 0.8s linear infinite;
 }
-
-
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+/* Code Blocks */
 .codeblock1 {
   width: 372.95px;
   height: 257.05px;
@@ -66,6 +71,7 @@ details > summary::-webkit-details-marker {
   filter: blur(34px);
   transform: matrix(1, 0, -0.03, 1, 0, 0);
 }
+
 .codeblock2 {
   position: absolute;
   width: 372.95px;
@@ -83,6 +89,7 @@ details > summary::-webkit-details-marker {
   filter: blur(34px);
   transform: matrix(1, 0, -0.03, 1, 0, 0);
 }
+
 .code-border {
   border: 2px solid;
   border-image-slice: 1;
@@ -93,42 +100,17 @@ details > summary::-webkit-details-marker {
     rgba(14, 26, 45, 0.24) -1.4%,
     rgba(17, 30, 50, 0.38) 104.96%
   );
-  /* backdrop-filter: blur(26px); */
-}
-.homepage_bg {
-  background: url("../src/assets/Images/bghome.svg");
-  /* background-size: contain; */
 }
 
+.homepage_bg {
+  background: url("../src/assets/Images/bghome.svg");
+}
+
+/* Spinner Animations */
 @keyframes spinner-bulqg1 {
   0% {
     clip-path: polygon(50% 50%, 0 0, 50% 0%, 50% 0%, 50% 0%, 50% 0%, 50% 0%);
   }
-
-  12.5% {
-    clip-path: polygon(
-      50% 50%,
-      0 0,
-      50% 0%,
-      100% 0%,
-      100% 0%,
-      100% 0%,
-      100% 0%
-    );
-  }
-
-  25% {
-    clip-path: polygon(
-      50% 50%,
-      0 0,
-      50% 0%,
-      100% 0%,
-      100% 100%,
-      100% 100%,
-      100% 100%
-    );
-  }
-
   50% {
     clip-path: polygon(
       50% 50%,
@@ -140,31 +122,6 @@ details > summary::-webkit-details-marker {
       0% 100%
     );
   }
-
-  62.5% {
-    clip-path: polygon(
-      50% 50%,
-      100% 0,
-      100% 0%,
-      100% 0%,
-      100% 100%,
-      50% 100%,
-      0% 100%
-    );
-  }
-
-  75% {
-    clip-path: polygon(
-      50% 50%,
-      100% 100%,
-      100% 100%,
-      100% 100%,
-      100% 100%,
-      50% 100%,
-      0% 100%
-    );
-  }
-
   100% {
     clip-path: polygon(
       50% 50%,
@@ -182,21 +139,15 @@ details > summary::-webkit-details-marker {
   0% {
     transform: scaleY(1) rotate(0deg);
   }
-
-  49.99% {
-    transform: scaleY(1) rotate(135deg);
-  }
-
   50% {
     transform: scaleY(-1) rotate(0deg);
   }
-
   100% {
     transform: scaleY(-1) rotate(-135deg);
   }
 }
 
-/* For conditional coloring of icons in dashboard sidebar */
+/* Sidebar Icons */
 .active-icon {
   fill: #ffd60a !important;
   color: #ffd60a !important;
@@ -209,15 +160,24 @@ details > summary::-webkit-details-marker {
 
 /* Buttons */
 .yellowButton {
-   cursor: pointer;
-  border-radius: 0.375rem;     /* rounded-md (6px) */
-  background-color: #CFAB08;   /* bg-richblack-800 */
-  padding: 8px 20px;           /* px-[20px] py-[8px] */
-  font-weight: 600;            /* font-semibold */
-  color: #F1F2FF; 
-} 
+  cursor: pointer;
+  border-radius: 0.375rem;
+  background-color: #cfab08;
+  padding: 8px 20px;
+  font-weight: 600;
+  color: #f1f2ff;
+}
 
-/* Swiper CSS Starts */
+.blackButton {
+  cursor: pointer;
+  border-radius: 0.375rem;
+  background-color: #161d29;
+  padding: 8px 20px;
+  font-weight: 600;
+  color: #f1f2ff;
+}
+
+/* Swiper */
 .swiper {
   max-width: 1200px;
   width: 91.66%;
@@ -228,52 +188,148 @@ details > summary::-webkit-details-marker {
 .swiper-slide {
   width: 100%;
   height: 100%;
-}
-.swiper-slide {
-  background-color: #161D29; /* bg-richblack-800 */
-  color: #DBDDEA;            /* text-richblack-25 */
-  padding: 0.75rem;          /* p-3 (12px) */
-  font-size: 14px;           /* text-[14px] */
-}
-/* Swiper CSS Ends */
-
-.blackButton {
-  cursor: pointer;
-  border-radius: 0.375rem;     /* rounded-md (6px) */
-  background-color: #161D29;   /* bg-richblack-800 */
-  padding: 8px 20px;           /* px-[20px] py-[8px] */
-  font-weight: 600;            /* font-semibold */
-  color: #F1F2FF;              /* text-richblack-5 */
+  background-color: #161d29;
+  color: #dbddea;
+  padding: 0.75rem;
+  font-size: 14px;
 }
 
- .lable-style {
-  font-size: 14px;   /* text-[14px] */
-  color: #F1F2FF;    /* text-richblack-5 */
+/* Forms */
+.lable-style {
+  font-size: 14px;
+  color: #f1f2ff;
 }
+
 .form-style {
-  border-radius: 0.5rem;              /* rounded-lg */
-  background-color: #2C333F;          /* bg-[#2C333F] */
-  padding: 0.75rem;                   /* p-3 */
-  font-size: 16px;                    /* text-[16px] */
-  line-height: 24px;                  /* leading-[24px] */
-  color: #F1F2FF;                     /* text-[#F1F2FF] */
-
-  box-shadow: 0 1px 0 0 rgba(255, 255, 255, 0.5); /* shadow */
-  outline: none;                      /* focus:outline-none */
+  border-radius: 0.5rem;
+  background-color: white;
+  padding: 0.75rem;
+  font-size: 16px;
+  line-height: 24px;
+  color: black;
+  box-shadow: 0 1px 0 0 rgba(255, 255, 255, 0.5);
+  outline: none;
 }
 
 .form-style::placeholder {
-  color: #6E727F;                     /* placeholder:text-[#6E727F] */
-}
-.section_heading {
-  font-size: 1.5rem;      /* text-2xl (24px) */
-  font-weight: 700;       /* font-bold */
-  color: #F1F2FF;         /* text-richblack-5 */
+  color: #6e727f;
 }
 
-/* Large screens (lg:) */
-@media (min-width: 1024px) {
+.section_heading {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #f1f2ff;
+}
+
+/* Review Slider */
+.review-slider-wrapper {
+  width: 100%;
+}
+
+.review-swiper {
+  padding-bottom: 10px;
+}
+
+.review-card {
+  height: 100%;
+  background: #161d29;
+  padding: 14px;
+  border-radius: 12px;
+  font-size: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.review-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.35);
+}
+
+.review-user {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.review-user img {
+  width: 36px;
+  height: 36px;
+  border-radius: 9999px;
+  object-fit: cover;
+}
+
+.review-user h3 {
+  font-weight: 600;
+  color: #f1f2ff;
+  font-size: 14px;
+}
+
+.review-user p {
+  font-size: 12px;
+  color: #6e727f;
+}
+
+.review-text {
+  color: #e5e7eb;
+  line-height: 1.4;
+}
+
+.review-rating {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: #facc15;
+}
+
+.review-rating span {
+  font-weight: 600;
+}
+
+/* ========================= */
+/* SAFE RESPONSIVE ADDITIONS */
+/* ========================= */
+
+/* Mobile */
+@media (max-width: 640px) {
+  .swiper {
+    margin: 24px 0;
+  }
+  .review-card {
+    padding: 12px;
+  }
+  .review-text {
+    font-size: 13px;
+  }
   .section_heading {
-    font-size: 2.25rem;   /* text-4xl (36px) */
+    font-size: 24px;
+  }
+}
+
+/* Tablet */
+@media (min-width: 641px) and (max-width: 1023px) {
+  .swiper {
+    margin: 32px 0;
+  }
+  .review-card {
+    padding: 14px;
+  }
+  .section_heading {
+    font-size: 28px;
+  }
+}
+
+/* Laptop */
+@media (min-width: 1024px) and (max-width: 1439px) {
+  .section_heading {
+    font-size: 32px;
+  }
+}
+
+/* Desktop */
+@media (min-width: 1440px) {
+  .section_heading {
+    font-size: 36px;
   }
 }
