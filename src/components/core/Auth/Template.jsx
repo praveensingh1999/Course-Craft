@@ -4,7 +4,7 @@ import { useSelector } from "react-redux"
 
 import frameImg from "../../../assets/Images/frame.png"
 import LoginForm from "./LoginForm"
-import SignupForm from "./SignupForm"
+import SignupForm from "./SignUpForm"
 import Footer from '../../common/Footer'
 
 function Template({ title, description1, description2, image, formType }) {
