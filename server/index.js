@@ -4,7 +4,7 @@ import cors from "cors";
 import fileUpload from "express-fileupload";
 import dotenv from "dotenv";
 
-import { connectDB } from "./config/database.js"; // ✅ Named import
+import { connectDB } from "./config/database.js";
 import { cloudinaryConnect } from "./config/cloudinary.js";
 
 import userRoutes from "./routes/User.js";
@@ -31,7 +31,7 @@ app.use(cookieParser());
 
 app.use(
   cors({
-    origin: "http://localhost:5173",
+    origin: "https://course-craft-flame.vercel.app/",
     credentials: true,
   })
 );
